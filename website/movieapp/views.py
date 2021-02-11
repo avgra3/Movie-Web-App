@@ -1,6 +1,18 @@
 from django.shortcuts import render
 
 # Creating the home page
+posts = [
+        {'author': 'Jane Doe',
+        'title': 'Entry 1',
+        'content': 'Post entry 1',
+        'date_posted': 'February 10, 2021'},
+        {'author': 'John Noe',
+        'title': 'Entry 1',
+        'content': 'Post entry 2',
+        'date_posted': 'February 10, 2030'}
+        ]
+
+
 def home(request):
     return render(request, 'movieapp/home.html')
 
@@ -11,3 +23,8 @@ def movies(request):
 # Creating the directors page
 def directors(request):
     return render(request, 'movieapp/directors.html')
+
+# Creating the movie reviews page
+def reviews(request):
+    context = {'posts': posts}
+    return render(request, 'movieapp/movie-reviews.html', context)
