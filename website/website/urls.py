@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from users import views as users_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('movieapp.urls')),
+    path('register/', users_views.register, name='resgister'),
+    path('', include('movieapp.urls')),   
 ]
