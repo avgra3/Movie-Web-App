@@ -118,3 +118,7 @@ STATIC_URL = '/static/'
 
 # Tells Crispy what css styles we want
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+# When we log in we will be redirected to the home page
+LOGIN_REDIRECT_URL = 'movie-home'
