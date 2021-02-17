@@ -39,17 +39,22 @@
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarToggle">
-                <div class="navbar-nav mr-auto">
+              <div class="navbar-nav mr-auto">
                 <a class="nav-item nav-link" href="{% url 'movie-home' %}">Home</a>
                 <a class="nav-item nav-link" href="{% url 'movie-movies' %}">Movies</a>
                 <a class="nav-item nav-link" href="{% url 'movie-directors' %}">Directors</a>
                 <a class="nav-item nav-link" href="{% url 'movie-reviews' %}">Movie Reviews</a>
-                </div>
+              </div>
                 <!-- Navbar Right Side -->
-                <div class="navbar-nav">
+              <div class="navbar-nav">
+                {% if user.is_authenticated%}
+                <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                {% else %}
                 <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
                 <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
-                </div>
+                {% endif %}
+              </div>
             </div>
             </div>
         </nav>

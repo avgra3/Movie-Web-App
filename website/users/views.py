@@ -17,6 +17,7 @@ def register(request):
     return render(request, 'users/register.html', {'form': form})
 
 
+# Uses a decorator that is built into Django - prevents people who are not logged in from seeing certain pages
 @login_required
 def profile(request):
     return render(request, 'users/profile.html')

@@ -122,3 +122,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # When we log in we will be redirected to the home page
 LOGIN_REDIRECT_URL = 'movie-home'
+
+# If not logged in - will be redirected when trying to log into the profile page
+LOGIN_URL = 'login'
