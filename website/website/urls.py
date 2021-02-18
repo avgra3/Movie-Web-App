@@ -29,6 +29,6 @@ urlpatterns = [
     path('', include('movieapp.urls')),
 ]
 
-
+# this is if the settings.DEBUG mode add the below to the usable patterns
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

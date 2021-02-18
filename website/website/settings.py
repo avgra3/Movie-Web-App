@@ -125,3 +125,7 @@ LOGIN_REDIRECT_URL = 'movie-home'
 
 # If not logged in - will be redirected when trying to log into the profile page
 LOGIN_URL = 'login'
+
+# Creating way for project to locate media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
