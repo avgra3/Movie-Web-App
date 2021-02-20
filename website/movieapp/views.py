@@ -1,24 +1,67 @@
 from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from .models import Post
 
 # Creating the home page
-posts = [
-        {'author': 'Test',
-        'title': 'Entry 1',
-        'content': 'Post entry 1',
-        'date_posted': 'February 10, 2021'},
-        {'author': 'Test',
-        'title': 'Entry 1',
-        'content': 'Post entry 2',
-        'date_posted': 'February 10, 2030'},
-        {'author': 'Test',
-        'title': 'Entry 3',
-        'content': 'Post entry 3',
-        'date_posted': 'February 11, 2030'}
-        ]
-
-
 def home(request):
     return render(request, 'movieapp/home.html')
+
+
+class PostListView(ListView):
+    model = Post
+    template_name = 'movieapp/movie-reviews.html' # <app>/<model>_<viewtype>.html
+    context_object_name = 'posts'
+    # Ordering output list
+    ordering = ['-date_posted']
+    
+
+class PostDetailView(DetailView):
+    model = Post
+
+# Allow users to delete views
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Post
+
+    # When we delete - redirect back to the movie reviews page
+    success_url = '/reviews/'
+    
+    # Verify that only users who wrote the post are able to delete their posts
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
+
+
+# Login required mixin makes it so that if we try to make a post but are not logged in
+# we are redirected to the login page
+class PostCreateView(LoginRequiredMixin, CreateView):
+    model = Post
+    fields = ['title', 'content']
+    
+    # Set author so that we can post without author errors
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+# Allows us to update our already created posts
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Post
+    fields = ['title', 'content']
+    
+    # Set author so that we can post without author errors
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    # Verify that only users who wrote the post are able to edit their posts
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
+
 
 # Creating the movies page
 def movies(request):
@@ -29,6 +72,10 @@ def directors(request):
     return render(request, 'movieapp/directors.html')
 
 # Creating the movie reviews page
-def reviews(request):
-    context = {'posts': posts}
-    return render(request, 'movieapp/movie-reviews.html', context)
+#def reviews(request):
+#    context = {'posts': posts}
+#    return render(request, 'movieapp/movie-reviews.html', context)
+
+
+# Creating class based views
+# 
