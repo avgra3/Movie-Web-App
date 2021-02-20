@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.models import User
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post
 
@@ -7,14 +8,28 @@ from .models import Post
 def home(request):
     return render(request, 'movieapp/home.html')
 
-
+# Movie Review Pages
 class PostListView(ListView):
     model = Post
     template_name = 'movieapp/movie-reviews.html' # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
     # Ordering output list
     ordering = ['-date_posted']
+    # Number of reviews per page
+    paginate_by = 5
     
+# Movie Review Pages - Filtered by a user
+class UserPostListView(ListView):
+    model = Post
+    template_name = 'movieapp/user-movie-reviews.html' # <app>/<model>_<viewtype>.html
+    context_object_name = 'posts'
+    # Number of reviews per page
+    paginate_by = 5
+    # Limits our results to a specific user - if there is no username for them then we will get a 404 error
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Post.objects.filter(author=user).order_by('-date_posted')
+
 
 class PostDetailView(DetailView):
     model = Post
@@ -70,12 +85,3 @@ def movies(request):
 # Creating the directors page
 def directors(request):
     return render(request, 'movieapp/directors.html')
-
-# Creating the movie reviews page
-#def reviews(request):
-#    context = {'posts': posts}
-#    return render(request, 'movieapp/movie-reviews.html', context)
-
-
-# Creating class based views
-# 
