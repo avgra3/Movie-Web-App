@@ -1,6 +1,29 @@
 {% extends "movieapp/base.html" %}
 {% block content %}
 
-<h1>Directors Page</h1>
+<h1>All Directors</h1>
 
+<br>
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Date of Birth</th>
+                        <th>Country of Origin</th>
+                    </tr>
+                    {% for director in directors %}
+                        <tr>
+                            <td>{{director.director_first_name}}</td>
+                            <td>{{director.director_last_name}}</td>
+                            <td>{{director.director_dob}}</td>
+                            <td>{{director.director_country}}</td>
+                        <tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
