@@ -92,7 +92,11 @@ class MoviesListView(ListView):
 
 
 # Creating the directors page
-def directors(request):
-    directors = Directors.objects.all()
-    context = {'directors': directors}
-    return render(request, 'movieapp/directors.html', context)
+class DirectorsListView(ListView):
+    model = Directors
+    template_name = 'movieapp/directors.html' # <app>/<model>_<viewtype>.html
+    context_object_name = 'directors'
+    # Ordering output list
+    ordering = ['director_last_name']
+    # Number of reviews per page
+    paginate_by = 20
