@@ -16,6 +16,3 @@ class Post(models.Model):
     # helps Django get the url to reroute the user after creating a post
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
-
-
-# Viewing all of the movies + directors

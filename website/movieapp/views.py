@@ -80,10 +80,16 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 
 # Creating the movies page
-def movies(request):
-    movies = Movies.objects.all()
-    context = {'movies': movies}
-    return render(request, 'movieapp/movies.html', context)
+class MoviesListView(ListView):
+    model = Movies
+    template_name = 'movieapp/movies.html' # <app>/<model>_<viewtype>.html
+    context_object_name = 'movies'
+    # Ordering output list
+    ordering = ['movie_name']
+    # Number of reviews per page
+    paginate_by = 20
+
+
 
 # Creating the directors page
 def directors(request):
