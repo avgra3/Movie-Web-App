@@ -22,6 +22,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'crispy_forms',
+    'sql_database.apps.SqlDatabaseConfig',
     'users.apps.UsersConfig',
     'movieapp.apps.MovieappConfig',
     'django.contrib.admin',

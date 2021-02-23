@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post
+from django.db import connection
 
 # Creating the home page
 def home(request):
@@ -80,7 +81,10 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 # Creating the movies page
 def movies(request):
-    return render(request, 'movieapp/movies.html')
+    cursor = connection.cursor()
+    mv = cursor.execute('''USE movies; SELECT * FROM directors;''')
+    context = {'direct': mv}
+    return render(request, 'movieapp/movies.html', context)
 
 # Creating the directors page
 def directors(request):
