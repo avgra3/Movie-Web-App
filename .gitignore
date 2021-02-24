@@ -1,5 +1,5 @@
 .env
-README.md
+secret_README.md
 MYSQL_Configs/
 venv/
 .vscode/
