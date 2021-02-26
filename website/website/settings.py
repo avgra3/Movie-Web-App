@@ -117,6 +117,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+'''
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+'''
+
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 # Tells Crispy what css styles we want
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

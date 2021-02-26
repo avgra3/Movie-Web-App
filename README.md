@@ -37,7 +37,6 @@ This database also allows for users to register to the app and post movie review
 
 ![User Posts Page](user_pages_example.png)
 
-
 ## Tools Used
 
 * Python: 3.9.0 _(virtual enviornment used and recommended)_
@@ -45,4 +44,4 @@ This database also allows for users to register to the app and post movie review
   * Make sure this is already installed before trying to set up the Django enviornmet or else you will not be able to install the neccessary MySQL Python modules
 * [Bootstrap](https://getbootstrap.com/docs/4.0/getting-started/introduction/#starter-template) _(just for styling as styling was not the main focus of this project but may be expanded upon in a future update)_.
 
-#### See the **_requirements.txt_** file to see all python modules needed
+### See the **_requirements.txt_** file to see all python modules needed
