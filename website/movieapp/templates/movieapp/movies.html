@@ -6,7 +6,9 @@
 <h1>All Movies</h1>
 
 
-<a class="section1" href="#">Scroll to bottom</a>
+<button class="btn btn-info mb-4"> 
+  <a class="section1">Scroll to bottom</a>
+</button>
 
 
 <br>
@@ -22,7 +24,7 @@
           </tr>
           {% for movie in movies %}
               <tr>
-                  <td><a  class="nav-item nav-link" href="#">{{ movie.movie_name }}</a></td>
+                  <td><a  class="nav-item nav-link" href="{% url 'movie-directors' %}">{{ movie.movie_name }}</a></td>
                   <td>{{ movie.movie_release_year }}</td>
                   <td>{{ movie.movie_genre }}</td>
                   <td>{{ movie.director_Name }}</td>
@@ -48,8 +50,10 @@
 
   <br>
 
+<button class="btn btn-info mb-4"> 
+  <a class="section2">Scroll to top</a>
+</button>
 
-<a class="section2" href="#">Scroll to top</a>
 
   
 <!--This js script is if we are at the bottom of the page and want to easily scrool to the top-->
