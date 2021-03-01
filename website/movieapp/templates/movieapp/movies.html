@@ -10,23 +10,23 @@
 
 
 <br>
-<!---->
-  <div class="table" >
+<!--The below is pulling in all movies from the database with certain details -->
+  <div>
       <table class="table">
           <tr>
               <th class="thead">Movie Name</th>
               <th>Release Year</th>
               <th>Genre</th>
               <th><a class="nav-item nav-link" href="{% url 'movie-directors' %}">Director</a></th>
-              <th>Director 2</th>                        
+              <th><a class="nav-item nav-link" href="{% url 'movie-directors' %}">Co-Director</a></th>                        
           </tr>
           {% for movie in movies %}
               <tr>
-                  <td><a href="#">{{movie.movie_name}}</a></td>
-                  <td>{{movie.movie_release_year}}</td>
-                  <td>{{movie.movie_genre}}</td>
-                  <td>{{movie.director_Name}}</td>
-                  <td>{{movie.director_Name_2}}</td>
+                  <td><a  class="nav-item nav-link" href="#">{{ movie.movie_name }}</a></td>
+                  <td>{{ movie.movie_release_year }}</td>
+                  <td>{{ movie.movie_genre }}</td>
+                  <td>{{ movie.director_Name }}</td>
+                  <td>{{ movie.director_Name_2 }}</td>
               <tr>
           {% endfor %}
       </table>
