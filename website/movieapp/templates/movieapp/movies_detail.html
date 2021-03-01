@@ -1,27 +1,23 @@
 {% extends "movieapp/base.html" %}
 {% block content %}
 
-<h1>{{ object.movie_name }} ({{ object.movie_release_year }})</h1>
-<br>
+<h1>{{ object.movie_name }} {{ object.movie_release_year }}</h1>
     <div class="row">
         <div class="col-md">
             <div class="card card-body">
                 <table class="table">
                     <tr>
-                        <th>Movie Name</th>
                         <th>Release Year</th>
                         <th>Genre</th>
                         <th>Director 1</th>
                         <th>Director 2</th>                        
-                    </tr>
-                   
-                        <tr>
-                            <td>{{ object.movie_name }}</td>
-                            <td>{{ object.movie_release_year }}</td>
-                            <td>{{ object.movie_genre }}</td>
-                            <td>{{ object.director_Name }}</td>
-                            <td>{{ object.director_Name_2 }}</td>
-                        <tr>
+                    </tr>                   
+                    <tr>
+                        <td>{{ object.movie_release_year }}</td>
+                        <td>{{ object.movie_genre }}</td>
+                        <td>{{ object.director_Name }}</td>
+                        <td>{{ object.director_Name_2 }}</td>
+                    <tr>
                     
                 </table>
             </div>
@@ -29,8 +25,8 @@
     </div>
 
 <!-- Basic Button to get us back to the movies page (in case the user did not want to use the Nav-bar). -->
-<!--     <button> 
+    <button> 
         <a class="nav-item nav-link" href="{% url 'movies' %}"> Back to Movies </a>
-    </button> -->
+    </button>
   
 {% endblock content %}

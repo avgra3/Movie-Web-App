@@ -50,3 +50,7 @@ class Movies(models.Model):
 
     def __str__(self):
         return (self.movie_name)
+
+    # helps Django get the url to reroute the user after creating a post
+    def get_absolute_url(self):
+        return reverse('movies-detail', kwargs={'pk': self.pk})

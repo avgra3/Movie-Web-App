@@ -89,7 +89,7 @@ class MoviesListView(ListView):
     # Number of reviews per page
     paginate_by = 20
 
-class MoviesDetailView(DetailView): #movies/movies_detail
+class MoviesDetailView(DetailView):
     model = Movies
 
 
