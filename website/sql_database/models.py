@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+from django.urls import reverse
 
 
 class AuthGroup(models.Model):
@@ -67,7 +69,8 @@ class AuthUserUserPermissions(models.Model):
         unique_together = (('user', 'permission'),)
 
 
-class Directors(models.Model):
+# Moved to movieapp models.py
+""" class Directors(models.Model):
     director_id = models.AutoField(primary_key=True)
     director_first_name = models.CharField(max_length=40)
     director_last_name = models.CharField(max_length=40)
@@ -79,7 +82,7 @@ class Directors(models.Model):
         db_table = 'directors'
 
     def __str__(self):
-        return (self.director_first_name + " " + self.director_last_name)
+        return (self.director_first_name + " " + self.director_last_name) """
 
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
@@ -135,8 +138,8 @@ class MovieappPost(models.Model):
         managed = False
         db_table = 'movieapp_post'
 
-
-class Movies(models.Model):
+# Moved to movieapp models.py
+""" class Movies(models.Model):
     movie_id = models.AutoField(primary_key=True)
     movie_name = models.CharField(max_length=100)
     movie_release_year = models.TextField()  # This field type is a guess.
@@ -152,7 +155,7 @@ class Movies(models.Model):
         db_table = 'movies'
 
     def __str__(self):
-        return (self.movie_name)
+        return (self.movie_name) """
 
 class UsersProfile(models.Model):
     image = models.CharField(max_length=100)
