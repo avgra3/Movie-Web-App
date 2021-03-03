@@ -89,6 +89,7 @@ class MoviesListView(ListView):
     # Number of reviews per page
     paginate_by = 20
 
+# Creates the movie details page
 class MoviesDetailView(DetailView):
     model = Movie
 
