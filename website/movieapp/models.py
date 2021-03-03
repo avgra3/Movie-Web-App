@@ -32,6 +32,10 @@ class Directors(models.Model):
     def __str__(self):
         return (self.director_first_name + " " + self.director_last_name)
 
+    # helps Django get the url to reroute the user when locating a director
+    def get_absolute_url(self):
+        return reverse('movie-directors', kwargs={'pk': self.director_id}) #was pk
+
 
 class Movies(models.Model):
     movie_id = models.AutoField(primary_key=True)

@@ -10,6 +10,7 @@ urlpatterns = [
     path('', views.home, name='movie-home'),
     path('movies/', MoviesListView.as_view(), name='movie-movies'),
     path('movies/<int:pk>/', MoviesDetailView.as_view(), name='movie-movies-detail'), # This is where we are having issues.. <app>/<model>_<viewtype>.html
+    
     path('directors/', DirectorsListView.as_view(), name='movie-directors'),
     path('directors/<int:pk>/', DirectorsDetailView.as_view(), name='movie-directors-detail'),
     

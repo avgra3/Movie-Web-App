@@ -19,16 +19,22 @@
               <th class="thead">Movie Name</th>
               <th>Release Year</th>
               <th>Genre</th>
-              <th><a class="nav-item nav-link" href="{% url 'movie-directors' %}">Director</a></th>
-              <th><a class="nav-item nav-link" href="{% url 'movie-directors' %}">Co-Director</a></th>                        
+              <th><a class="article-title" href="{% url 'movie-directors' %}">Director (s)</a></th>
+              <!-- <th><a class="article-title" href="{% url 'movie-directors' %}">Co-Director</a></th>    -->                     
           </tr>
           {% for movie in movies %}
               <tr>
-                  <td><a  class="nav-item nav-link" href="{% url 'movie-directors' %}">{{ movie.movie_name }}</a></td>
+                  <td><a  class="article-title" href="#">{{ movie.movie_name }}</a></td>
                   <td>{{ movie.movie_release_year }}</td>
                   <td>{{ movie.movie_genre }}</td>
-                  <td>{{ movie.director_Name }}</td>
-                  <td>{{ movie.director_Name_2 }}</td>
+                  <td>{{ movie.director_Name }} 
+                      {% if movie.director_Name_2 is NULL %}
+                         
+                      {% else %}
+                        and {{ movie.director_Name_2 }}
+                      {% endif %}
+                  </td>
+                  <!-- <td>{{ movie.director_Name_2 }}</td> -->
               <tr>
           {% endfor %}
       </table>
