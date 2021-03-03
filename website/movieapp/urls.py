@@ -2,14 +2,17 @@ from django.urls import path
 from . import views
 from .views import (PostListView, PostDetailView, PostCreateView, 
                     PostUpdateView, PostDeleteView, UserPostListView, 
-                    MoviesListView, DirectorsListView, MoviesDetailView)
+                    MoviesListView, DirectorsListView, MoviesDetailView,
+                    DirectorsDetailView)
 
 # Url paths for all movie app
 urlpatterns = [
     path('', views.home, name='movie-home'),
     path('movies/', MoviesListView.as_view(), name='movie-movies'),
-    path('movies/<int:pk>/', MoviesDetailView.as_view(), name='movies-detail'), # This is where we are having issues..
+    path('movies/<int:pk>/', MoviesDetailView.as_view(), name='movie-movies-detail'), # This is where we are having issues.. <app>/<model>_<viewtype>.html
     path('directors/', DirectorsListView.as_view(), name='movie-directors'),
+    path('directors/<int:pk>/', DirectorsDetailView.as_view(), name='movie-directors-detail'),
+    
     path('reviews/', PostListView.as_view(), name='movie-reviews'),
     path('user/<str:username>', UserPostListView.as_view(), name='user-posts'),    
     

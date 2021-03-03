@@ -102,3 +102,7 @@ class DirectorsListView(ListView):
     ordering = ['director_last_name']
     # Number of reviews per page
     paginate_by = 20
+
+# Creates the details page for the Directors
+class DirectorsDetailView(DetailView):
+    model = Directors

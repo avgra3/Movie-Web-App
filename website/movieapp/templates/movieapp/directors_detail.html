@@ -1,0 +1,42 @@
+{% extends "movieapp/base.html" %}
+{% block content %}
+
+<h1>A Director</h1>
+
+<br>
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Date of Birth</th>
+                        <th>Country of Origin</th>
+                    </tr>
+                        <tr>
+                            <td>{{object.director_first_name}}</td>
+                            <td>{{object.director_last_name}}</td>
+                            <td>{{object.director_dob}}</td>
+                            <td>{{object.director_country}}</td>
+                        <tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+<!--This includes pagination on our web-page-->
+{% if is_paginated %}
+
+{% for num in page_obj.paginator.page_range %}
+  {% if page_obj.number == num %}
+    <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+  {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+    <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+  {% endif %}
+{% endfor %}
+
+{% endif %}
+{% endblock content %}
