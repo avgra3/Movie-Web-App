@@ -18,7 +18,7 @@ class Post(models.Model):
         return reverse('post-detail', kwargs={'pk': self.pk})
 
 
-class Directors(models.Model):
+class Director(models.Model):
     director_id = models.AutoField(primary_key=True)
     director_first_name = models.CharField(max_length=40)
     director_last_name = models.CharField(max_length=40)
@@ -37,7 +37,7 @@ class Directors(models.Model):
         return reverse('movie-directors', kwargs={'pk': self.director_id}) #was pk
 
 
-class Movies(models.Model):
+class Movie(models.Model):
     movie_id = models.AutoField(primary_key=True)
     movie_name = models.CharField(max_length=100)
     movie_release_year = models.TextField()  # This field type is a guess.
@@ -45,8 +45,8 @@ class Movies(models.Model):
     movie_genre = models.CharField(max_length=20)
     movie_want = models.CharField(max_length=2)
     movie_own = models.CharField(max_length=2)
-    director_Name = models.ForeignKey(Directors, models.DO_NOTHING, db_column='director_id_1', null=False, related_name='director_id_1')
-    director_Name_2 = models.ForeignKey(Directors, models.DO_NOTHING, db_column='director_id_2', null=True, blank=True, related_name='director_id_2')
+    director_Name = models.ForeignKey(Director, models.DO_NOTHING, db_column='director_id_1', null=False, related_name='director_id_1')
+    director_Name_2 = models.ForeignKey(Director, models.DO_NOTHING, db_column='director_id_2', null=True, blank=True, related_name='director_id_2')
 
     class Meta:
         managed = False

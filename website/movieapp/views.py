@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Directors, Movies
+from .models import Post, Director, Movie
 
 #moved to movieapp
 #from sql_database.models import Movies, Directors
@@ -81,7 +81,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 # Creating the movies page
 class MoviesListView(ListView):
-    model = Movies
+    model = Movie
     template_name = 'movieapp/movies.html' # <app>/<model>_<viewtype>.html
     context_object_name = 'movies'
     # Ordering output list
@@ -90,12 +90,12 @@ class MoviesListView(ListView):
     paginate_by = 20
 
 class MoviesDetailView(DetailView):
-    model = Movies
+    model = Movie
 
 
 # Creating the directors page
 class DirectorsListView(ListView):
-    model = Directors
+    model = Director
     template_name = 'movieapp/directors.html' # <app>/<model>_<viewtype>.html
     context_object_name = 'directors'
     # Ordering output list
@@ -105,4 +105,4 @@ class DirectorsListView(ListView):
 
 # Creates the details page for the Directors
 class DirectorsDetailView(DetailView):
-    model = Directors
+    model = Director

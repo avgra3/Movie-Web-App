@@ -27,14 +27,14 @@
                   <td><a  class="article-title" href="#">{{ movie.movie_name }}</a></td>
                   <td>{{ movie.movie_release_year }}</td>
                   <td>{{ movie.movie_genre }}</td>
-                  <td>{{ movie.director_Name }} 
-                      {% if movie.director_Name_2 is NULL %}
-                         
-                      {% else %}
-                        and {{ movie.director_Name_2 }}
-                      {% endif %}
+                  <td>
+                    {{ movie.director_Name }} 
+                    {% if movie.director_Name_2 is NULL %}
+                        <!-- Intentionally left blank -->
+                    {% else %}
+                      and {{ movie.director_Name_2 }}
+                    {% endif %}
                   </td>
-                  <!-- <td>{{ movie.director_Name_2 }}</td> -->
               <tr>
           {% endfor %}
       </table>

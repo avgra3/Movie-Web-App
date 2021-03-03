@@ -16,7 +16,9 @@
                     {% for director in directors %}
                         <tr>
                             <!-- director_id -->
-                            <td><a class="article-title" href="{% url 'movie-directors-detail' director.id %}">{{director.director_first_name}} {{director.director_last_name}}</a> </td>
+                            <!-- I am thinking the below should work - receive NoReverseMatch at /directors/ -->
+                            <!-- {% url 'movie-directors-detail' director.id %} -->
+                            <td><a class="article-title" href="#">{{director.director_first_name}} {{director.director_last_name}}</a></td>
                             <td>{{director.director_dob}}</td>
                             <td>{{director.director_country}}</td>
                         <tr>
