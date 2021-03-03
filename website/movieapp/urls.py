@@ -9,10 +9,10 @@ from .views import (PostListView, PostDetailView, PostCreateView,
 urlpatterns = [
     path('', views.home, name='movie-home'),
     path('movies/', MoviesListView.as_view(), name='movie-movies'),
-    path('movies/<int:pk>/', MoviesDetailView.as_view(), name='movie-movies-detail'), # This is where we are having issues.. <app>/<model>_<viewtype>.html
+    path('movies/<int:pk>/', MoviesDetailView.as_view(), name='movie-movies-detail'),
     
     path('directors/', DirectorsListView.as_view(), name='movie-directors'),
-    path('directors/<int:pk>/', DirectorsDetailView.as_view(), name='movie-directors-detail'),
+    path('directors/<int:pk>/', DirectorsDetailView.as_view(), name='movie-director-detail'),
     
     path('reviews/', PostListView.as_view(), name='movie-reviews'),
     path('user/<str:username>', UserPostListView.as_view(), name='user-posts'),    
