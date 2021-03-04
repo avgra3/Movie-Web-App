@@ -28,7 +28,8 @@
                   <td>{{ movie.movie_release_year }}</td>
                   <td>{{ movie.movie_genre }}</td>
                   <td>
-                    {{ movie.director_Name }} 
+                    {{ movie.director_Name }}
+                    <!-- If function to change format for when there is a 2nd Director -->
                     {% if movie.director_Name_2 is NULL %}
                         <!-- Intentionally left blank -->
                     {% else %}
