@@ -6,36 +6,27 @@
 <h1>All Movies</h1>
 
 
-<button class="btn btn-info mb-4"> 
-  <a class="section1">Scroll to bottom</a>
-</button>
+<a class="section1" href="#">Scroll to bottom</a>
 
 
 <br>
-<!--The below is pulling in all movies from the database with certain details -->
-  <div>
+<!---->
+  <div class="table" >
       <table class="table">
           <tr>
               <th class="thead">Movie Name</th>
               <th>Release Year</th>
               <th>Genre</th>
-              <th><a class="article-title" href="{% url 'movie-directors' %}">Director (s)</a></th>
-              <!-- <th><a class="article-title" href="{% url 'movie-directors' %}">Co-Director</a></th>    -->                     
+              <th><a class="nav-item nav-link" href="{% url 'movie-directors' %}">Director</a></th>
+              <th>Director 2</th>                        
           </tr>
           {% for movie in movies %}
               <tr>
-                  <td><a  class="article-title" href="#">{{ movie.movie_name }}</a></td>
-                  <td>{{ movie.movie_release_year }}</td>
-                  <td>{{ movie.movie_genre }}</td>
-                  <td>
-                    {{ movie.director_Name }}
-                    <!-- If function to change format for when there is a 2nd Director -->
-                    {% if movie.director_Name_2 is NULL %}
-                        <!-- Intentionally left blank -->
-                    {% else %}
-                      and {{ movie.director_Name_2 }}
-                    {% endif %}
-                  </td>
+                  <td><a href="#">{{movie.movie_name}}</a></td>
+                  <td>{{movie.movie_release_year}}</td>
+                  <td>{{movie.movie_genre}}</td>
+                  <td>{{movie.director_Name}}</td>
+                  <td>{{movie.director_Name_2}}</td>
               <tr>
           {% endfor %}
       </table>
@@ -57,10 +48,8 @@
 
   <br>
 
-<button class="btn btn-info mb-4"> 
-  <a class="section2">Scroll to top</a>
-</button>
 
+<a class="section2" href="#">Scroll to top</a>
 
   
 <!--This js script is if we are at the bottom of the page and want to easily scrool to the top-->

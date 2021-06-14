@@ -2,10 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Director, Movie
-
-#moved to movieapp
-#from sql_database.models import Movies, Directors
+from .models import Post
+from sql_database.models import Movies, Directors
 
 # Creating the home page
 def home(request):
@@ -40,8 +38,10 @@ class PostDetailView(DetailView):
 # Allow users to delete views
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
+
     # When we delete - redirect back to the movie reviews page
-    success_url = '/reviews/'   
+    success_url = '/reviews/'
+    
     # Verify that only users who wrote the post are able to delete their posts
     def test_func(self):
         post = self.get_object()
@@ -81,7 +81,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 # Creating the movies page
 class MoviesListView(ListView):
-    model = Movie
+    model = Movies
     template_name = 'movieapp/movies.html' # <app>/<model>_<viewtype>.html
     context_object_name = 'movies'
     # Ordering output list
@@ -89,21 +89,14 @@ class MoviesListView(ListView):
     # Number of reviews per page
     paginate_by = 20
 
-# Creates the movie details page
-class MoviesDetailView(DetailView):
-    model = Movie
 
 
 # Creating the directors page
 class DirectorsListView(ListView):
-    model = Director
+    model = Directors
     template_name = 'movieapp/directors.html' # <app>/<model>_<viewtype>.html
     context_object_name = 'directors'
     # Ordering output list
     ordering = ['director_last_name']
     # Number of reviews per page
     paginate_by = 20
-
-# Creates the details page for the Directors
-class DirectorsDetailView(DetailView):
-    model = Director

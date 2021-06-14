@@ -31,7 +31,7 @@ urlpatterns = [
     path('password-reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'), name='password_reset_confirm'),
     path('password-reset-complete/', auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'), name='password_reset_complete'),
     path('', include('movieapp.urls')),
-]   
+]
 
 # this is if the settings.DEBUG mode add the below to the usable patterns
 if settings.DEBUG:
